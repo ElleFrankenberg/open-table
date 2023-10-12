@@ -1,91 +1,74 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import styles from "./page.module.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
+    <main className="bg-gray-100 min-h-screen w-screen">
+      <main className="max-w-screen-2xl m-auto bg-white">
+        {/* navbar */}
+        <nav className="bg-white p-2 flex justify-between">
+          <a href="/" className="font-bold text-gray-700 text-2xl">
+            {" "}
+            OpenTable{" "}
           </a>
+          <div>
+            <div className="flex">
+              <button className="bg-blue-400 text-white border p-1 px-4 rounded mr-3">
+                Sign in
+              </button>
+              <button className="border p-1 px-4 rounded">Sign up</button>
+            </div>
+          </div>
+        </nav>
+        {/* navbar */}
+        {/* header */}
+        <div className="h-96 overflow-hidden">
+          <div className="bg-center bg-gradient-to-r from-[#0f1f47] to-[#5f6984] h-full flex justify-center items-center">
+            <h1 className="text-7xl text-white capitalize text-shadow text-center">
+              milestones grill (toronto)
+            </h1>
+          </div>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
+        {/* header */}
+        {/* description portion */}
+        <div className="flex m-auto w-2/3 justify-between items-start 0 -mt-11">
+          <div className="bg-white w-[100%] rounded p-3 shadow">
+            {/* restaurant navbar */}
+            <nav className="flex text-reg border-b pb-2 capitalize">
+              <a href="#" className="mr-7">
+                overview
+              </a>
+              <a href="#">menu</a>
+            </nav>
+            {/* restaurant navbar */}
+            {/* menu */}
+            <main className="bg-white mt-5">
+              <div>
+                <div className="mt-4 pb-1 mb-1">
+                  <h1 className="font-bold text-4xl">Menu</h1>
+                </div>
+                <div className="flex flex-wrap justify-between">
+                  {/* menu card */}
+                  <div className="border rounded p-3 w-[49%] mb-3">
+                    <h3 className="font-bold text-lg">Surf and Turf</h3>
+                    <p className="font-light text-sm mt-1">
+                      Excepteur sint occaecat cupidatat non proident, sunt in
+                      culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p className="mt-7">$80.00</p>
+                  </div>
+                  {/* menu card */}
+                </div>
+              </div>
+            </main>
+            {/* menu */}
+          </div>
+          {/* description portion */}
         </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </main>
     </main>
-  )
+  );
 }
