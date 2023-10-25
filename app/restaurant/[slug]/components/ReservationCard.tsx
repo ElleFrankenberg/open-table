@@ -1,3 +1,5 @@
+"use client";
+
 const ReservationCard = () => {
   return (
     <div className="fixed w-[15%] rounded bg-white p-3 shadow">
