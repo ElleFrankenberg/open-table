@@ -1,24 +1,26 @@
 import Link from "next/link";
+import { RestaurantCardType } from "../page";
+import Price from "./Price";
 
-const RestaurantCard = () => {
+interface Props {
+  restaurant: RestaurantCardType;
+}
+
+const RestaurantCard = ({ restaurant }: Props) => {
   return (
     <div className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer">
-      <Link href="/restaurant/milestones-grill">
-        <img
-          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
-          alt=""
-          className="w-full h-36"
-        />
+      <Link href={`/restaurant/${restaurant.slug}`}>
+        <img src={restaurant.main_image} alt="" className="w-full h-36" />
         <div className="p-1">
-          <h3 className="font-bold text-2xl mb-2">milestones grill</h3>
+          <h3 className="font-bold text-2xl mb-2">{restaurant.name}</h3>
           <div className="flex items-start">
             <div className="flex mb-2">*****</div>
             <p className="ml-2">77 reviews</p>
           </div>
           <div className="flex text-reg font-light capitalize">
-            <p className="mr-3 ">mexican</p>
-            <p className="mr-3">$$$$$</p>
-            <p>toronto</p>
+            <p className="mr-3 ">{restaurant.cuisine.name}</p>
+            <Price price={restaurant.price} />
+            <p>{restaurant.location.name}</p>
           </div>
           <p className="text-sm mt-1 font-bold ">booked 3 times today</p>
         </div>
