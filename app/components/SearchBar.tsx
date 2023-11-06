@@ -24,7 +24,7 @@ const SearchBar = () => {
           setLocation("");
         }}
       >
-        Let's go oo
+        Let's go
       </button>
     </div>
   );
