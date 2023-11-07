@@ -74,6 +74,7 @@ const SearchSideBar = ({
                 query: { ...searchParams, price },
               }}
               className={className}
+              key={price}
             >
               {label}
             </Link>

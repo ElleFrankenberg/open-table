@@ -2,7 +2,7 @@ import Header from "./components/Header";
 
 import SearchSideBar from "./components/SearchSideBar";
 import RestaurantCard from "./components/RestaurantCard";
-import { PRICE, PrismaClient } from "@prisma/client";
+import { PRICE, PrismaClient, Review } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -47,6 +47,7 @@ const fetchRestaurantsBySearchParams = ({
     price: true,
     location: true,
     cuisine: true,
+    reviews: true,
   };
 
   return prisma.restaurant.findMany({
