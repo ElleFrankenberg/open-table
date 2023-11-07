@@ -1,3 +1,4 @@
+import Stars from "../../../components/Stars";
 import { ReviewType } from "../page";
 
 const ReviewCard = ({ review }: { review: ReviewType }) => {
@@ -17,7 +18,9 @@ const ReviewCard = ({ review }: { review: ReviewType }) => {
         </div>
         <div className="ml-10 w-5/6">
           <div className="flex items-center">
-            <div className="flex mr-5">*****</div>
+            <div className="flex mr-5">
+              <Stars rating={review.rating} reviews={[]} />
+            </div>
           </div>
           <div className="mt-5">
             <p className="font-light text-lg">{review.text}</p>
