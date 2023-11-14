@@ -1,10 +1,12 @@
 "use client";
 
+import { Alert, CircularProgress } from "@mui/material";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { useEffect, useState } from "react";
+
+import { useContext, useEffect, useState } from "react";
+import useAuth from "../../../hooks/useAuth";
+import { AuthenticationContext } from "../../context/AuthContext";
 import Inputs from "./Inputs";
 
 const style = {
@@ -29,6 +31,8 @@ const AuthModal = ({ isSignIn }: { isSignIn: boolean }) => {
     password: "",
   });
   const [disabled, setDisabled] = useState(true);
+  const { signIn, signUp } = useAuth();
+  const { loading, error, data } = useContext(AuthenticationContext);
 
   useEffect(() => {
     if (isSignIn) {
@@ -59,6 +63,14 @@ const AuthModal = ({ isSignIn }: { isSignIn: boolean }) => {
 
   const handleChangeInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
+
+  const handleClick = () => {
+    if (isSignIn) {
+      signIn({ email: inputs.email, password: inputs.password }, handleClose);
+    } else {
+      signUp(inputs, handleClose);
+    }
   };
 
   return (
@@ -92,17 +104,27 @@ const AuthModal = ({ isSignIn }: { isSignIn: boolean }) => {
                   "Create your OpenTable account"
                 )}
               </h2>
-              <Inputs
-                inputs={inputs}
-                handleChangeInputs={handleChangeInputs}
-                isSignIn={isSignIn}
-              />
-              <button
-                disabled={disabled}
-                className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400"
-              >
-                {renderContent("Sign In", "Create Account")}
-              </button>
+              {loading ? (
+                <div className="py-24 px-2 flex justify-center">
+                  <CircularProgress />
+                </div>
+              ) : (
+                <>
+                  <Inputs
+                    inputs={inputs}
+                    handleChangeInputs={handleChangeInputs}
+                    isSignIn={isSignIn}
+                  />
+                  <button
+                    disabled={disabled}
+                    onClick={handleClick}
+                    className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400"
+                  >
+                    {renderContent("Sign In", "Create Account")}
+                  </button>
+                </>
+              )}
+              {error && <Alert severity="error">{error}</Alert>}
             </div>
           </div>
         </Box>
